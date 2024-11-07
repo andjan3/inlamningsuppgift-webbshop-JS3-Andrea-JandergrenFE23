@@ -1,13 +1,20 @@
 import { useState } from "react";
-import { InputState } from "../types";
+import { useDispatch } from "react-redux";
+import { filterProduct } from "../redux/productSlice";
+
+interface InputState {
+  input: string;
+}
 
 export default function Searchbar() {
+  const dispatch = useDispatch();
   const initialState: InputState = { input: "" };
   const [searchInput, setSearchInput] = useState<InputState>(initialState);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(searchInput.input);
+    dispatch(filterProduct(searchInput.input));
     setSearchInput({ input: "" });
   };
   return (
