@@ -6,9 +6,8 @@
       "description": {
         "Material": "100% acrylic",
         "Fabric": "Ribbed",
-        "Collar": "Polo",
-        "Pattern": "Solid color",
-        "Article number": "V1021I1J0-M11"
+        "CareInstructions": "Do not bleach, do not tumble dry, machine wash at 30 °C",
+        "ArticleNumber": "V1021I1J0-M11"
       },
       "color": "Green",
       "price": 419,
@@ -21,10 +20,8 @@
       "description": {
         "Material": "100% acrylic",
         "Fabric": "Ribbed",
-        "Collar": "Half zipper",
-        "Closure": "Zipper",
-        "Pattern": "Solid color",
-        "Article number": "AN621I0J0-A11"
+        "CareInstructions": "Do not bleach, do not tumble dry, machine wash at 30 °C",
+        "ArticleNumber": "AN621I0J0-A11"
       },
       "color": "White/black",
       "price": 499,
@@ -36,10 +33,9 @@
       "title": "b.young BYPAMILA - T-shirt - bas - off white",
       "description": {
         "Material": "47% modal, 47% cotton, 6% elastane",
-        "Care instructions": "Do not bleach, do not tumble dry, machine wash at 30 °C",
-        "Neck": "Rounded",
-        "Pattern": "Solid color",
-        "Article number": "BY221D04I-A12"
+        "Fabric": "Cotton",
+        "CareInstructions": "Do not bleach, do not tumble dry, machine wash at 30 °C",
+        "ArticleNumber": "BY221D04I-A12"
       },
       "color": "White",
       "price": 199,
@@ -51,11 +47,9 @@
       "title": "Next ESSENTIAL SHORT SLEEVE CREW NECK - T-shirt med print ",
       "description": {
         "Material": "100% cotton",
-        "Back material": "100% cotton",
         "Fabric": "Jersey",
-        "Neck": "Rounded",
-        "Pattern": "Striped",
-        "Article number": "NX321D1PZ-B11"
+        "CareInstructions": "Machine wash at 40 °C, ok to tumble dry, can be dry cleaned",
+        "ArticleNumber": "NX321D1PZ-B11"
       },
       "color": "Neutral",
       "price": 136,
@@ -67,10 +61,8 @@
       "description": {
         "Material": "100% cotton",
         "Fabric": "Denim Waist",
-        "Closure": "Concealed zipper fly",
-        "Pockets": "Side pockets, back pockets",
-        "Details": "Studded decoration",
-        "Article number": "PUC21N0O4-K14"
+        "CareInstructions": "Do not bleach, machine wash at 40 °C, do not tumble dry, can be dry cleaned",
+        "ArticleNumber": "PUC21N0O4-K14"
       },
       "color": "Light blue denim",
       "price": 299,
@@ -82,11 +74,9 @@
       "title": " Pepe Jeans STRAIGHT UHW - Jeans straight leg - denim",
       "description": {
         "Material": "99% cotton, 1% elastane",
-        "Back material": "99% cotton, 1% elastane",
-        "Lining": "65% polyester, 35% cotton",
         "Fabric": "Denim",
-        "Care instructions": "Do not bleach, machine wash at 40 °C, do not tumble dry, can be dry cleaned",
-        "Articlenumber": "PE121N1BX-K11"
+        "CareInstructions": "Do not bleach, machine wash at 40 °C, do not tumble dry, can be dry cleaned",
+        "ArticleNumber": "PE121N1BX-K11"
       },
       "color": "Denim",
       "price": 1189,
@@ -97,11 +87,9 @@
       "title": "Stradivarius SOFT-TOUCH - Trenchcoat - khaki",
       "description": {
         "Material": "100% polyester",
-        "Lining thickness": "Unlined",
-        "Collar": "Lapel collar",
-        "Closure": "Button",
-        "Pockets": "Patch pockets",
-        "Article number": "STH21U0KN-N11"
+        "Fabric": "Polyester",
+        "CareInstructions": "Machine wash at 30 °C, do not bleach",
+        "ArticleNumber": "STH21U0KN-N11"
       },
       "color": "Khaki",
       "price": 699,
@@ -113,11 +101,9 @@
       "title": "Stradivarius SOFT TOUCH - Classic Trenchcoat- beige",
       "description": {
         "Material": "100% polyester",
-        "Lining thickness": "Unlined",
-        "Collar": "Lapel collar",
-        "Closure": "Button",
-        "Pockets": "Patch pockets",
-        "Article number": "STH21U0L9-A11"
+        "Fabric": "Polyester",
+        "CareInstructions": "Machine wash at 30 °C, do not bleach",
+        "ArticleNumber": "STH21U0L9-A11"
       },
       "color": "Beige",
       "price": 699,
@@ -130,11 +116,8 @@
       "description": {
         "Material": "50% cotton, 25% viscose, 25% polyamide",
         "Fabric": "Knitted",
-        "Neck": "Rounded",
-        "Closure": "Belt",
-        "Pattern": "Melange",
-        "Details": "With belt",
-        "Article number": "BUR21C0QP-C12"
+        "CareInstructions": "Machine wash at 30 °C, do not bleach",
+        "ArticleNumber": "BUR21C0QP-C12"
       },
       "color": "Grey",
       "price": 699,
@@ -147,10 +130,8 @@
       "description": {
         "Material": "90% polyester, 8% polyamide, 2% elastane",
         "Fabric": "Knitted",
-        "Care instructions": "Machine wash at 30 °C, do not bleach",
-        "Collar": "Turn down",
-        "Pattern": "Solid color",
-        "Article number": "KA321C166-M11"
+        "CareInstructions": "Machine wash at 30 °C, do not bleach",
+        "ArticleNumber": "KA321C166-M11"
       },
       "color": "Aventurine",
       "price": 799,
