@@ -1,4 +1,5 @@
 import { Product } from "../types";
+import { PopUpModal } from "./PopUpModal";
 
 interface ProductCardProps {
   product: Product;
@@ -20,6 +21,10 @@ export default function ProductCard({ product }: ProductCardProps) {
             <div className="col-md-4">
               <div className="card-body">
                 <h5 className="card-title">{product.title}</h5>
+                <PopUpModal
+                  title={product.title}
+                  description={product.description}
+                />
               </div>
             </div>
             <div className="col-md-2 d-flex flex-column align-items-center">

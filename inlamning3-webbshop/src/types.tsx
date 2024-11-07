@@ -1,4 +1,4 @@
-interface ProductDescription {
+export interface ProductDescription {
   Material: string;
   Fabric?: string;
   CareInstructions?: string;
