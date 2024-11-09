@@ -7,12 +7,13 @@ interface ProductsState {
   filteredProducts: Product[];
 }
 
+const initialState: ProductsState = {
+  allProducts: productsData.products,
+  filteredProducts: [],
+};
 export const productSlice = createSlice({
   name: "product",
-  initialState: {
-    allProducts: productsData.products,
-    filteredProducts: [] as Product[],
-  } as ProductsState,
+  initialState,
   reducers: {
     filterProduct: (state, action: PayloadAction<string>) => {
       const searchFilter = action.payload.trim().toLowerCase();

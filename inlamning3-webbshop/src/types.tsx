@@ -1,8 +1,8 @@
 export interface ProductDescription {
   Material: string;
-  Fabric?: string;
-  CareInstructions?: string;
-  ArticleNumber?: string;
+  Fabric: string;
+  CareInstructions: string;
+  ArticleNumber: string;
 }
 
 export interface Product {
