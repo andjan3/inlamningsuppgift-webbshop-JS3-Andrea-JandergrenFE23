@@ -5,16 +5,16 @@ interface PopUpModalInfo {
   title: string;
   description: ProductDescription;
 }
+
 export function PopUpModal({ title, description }: PopUpModalInfo) {
   const [isModalVisible, setModalVisible] = useState<boolean>(false);
-
-  console.log(description);
 
   const openModal = () => {
     setModalVisible(true);
   };
 
-  const closeModal = () => {
+  const closeModal = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setModalVisible(false);
   };
 
@@ -32,7 +32,11 @@ export function PopUpModal({ title, description }: PopUpModalInfo) {
           style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
           onClick={closeModal}
         >
-          <div className="modal-dialog" role="document">
+          <div
+            className="modal-dialog"
+            role="document"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title">{title}</h5>

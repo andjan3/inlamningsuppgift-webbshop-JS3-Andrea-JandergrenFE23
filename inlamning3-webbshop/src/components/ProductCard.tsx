@@ -13,7 +13,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             <img
               src={product.imgUrl}
               className="img-fluid rounded-start"
-              alt="Clothing"
+              alt={"Image of" + product.title}
             />
           </div>
 

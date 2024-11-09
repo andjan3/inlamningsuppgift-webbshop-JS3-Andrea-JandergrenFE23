@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../redux/reduxHooks";
 import { filterProduct } from "../redux/productSlice";
 
 interface InputState {
@@ -7,7 +7,7 @@ interface InputState {
 }
 
 export default function Searchbar() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const initialState: InputState = { input: "" };
   const [searchInput, setSearchInput] = useState<InputState>(initialState);
 

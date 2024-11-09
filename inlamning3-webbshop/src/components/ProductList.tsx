@@ -1,9 +1,9 @@
 import ProductCard from "./ProductCard";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../redux/reduxHooks";
 import { selectFilteredProducts } from "../redux/productSlice";
 
 export default function ProductList() {
-  const filteredProducts = useSelector(selectFilteredProducts);
+  const filteredProducts = useAppSelector(selectFilteredProducts);
   return (
     <>
       <div className="productList">
