@@ -1,15 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import productsData from "../db/products.json";
-import { Product } from "../types";
+import { Product, CartItem } from "../types";
 
 interface ProductsState {
   allProducts: Product[];
   filteredProducts: Product[];
+  cartItems: CartItem[];
 }
 
 const initialState: ProductsState = {
   allProducts: productsData.products,
   filteredProducts: [],
+  cartItems: [],
 };
 export const productSlice = createSlice({
   name: "product",
@@ -28,15 +30,41 @@ export const productSlice = createSlice({
         );
       });
     },
+    addProductToCart: (state, action: PayloadAction<Product>) => {
+      const product = action.payload;
+
+      if (product) {
+        const existingCartItem = state.cartItems.find(
+          (item) => item.product.id === product.id
+        );
+
+        if (existingCartItem) {
+          existingCartItem.quantity += 1;
+          existingCartItem.totalPrice =
+            existingCartItem.quantity * product.price;
+        } else {
+          state.cartItems.push({
+            product,
+            quantity: 1,
+            totalPrice: product.price,
+          });
+        }
+      }
+    },
   },
 
   selectors: {
     selectFilteredProducts: (state) => {
       return state.filteredProducts;
     },
+
+    selectCartItems: (state) => {
+      return state.cartItems;
+    },
   },
 });
 
-export const { selectFilteredProducts } = productSlice.selectors;
-export const { filterProduct } = productSlice.actions;
+export const { selectFilteredProducts, selectCartItems } =
+  productSlice.selectors;
+export const { filterProduct, addProductToCart } = productSlice.actions;
 export default productSlice.reducer;

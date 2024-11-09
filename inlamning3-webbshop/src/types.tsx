@@ -13,3 +13,9 @@ export interface Product {
   color: string;
   imgUrl: string;
 }
+
+export interface CartItem {
+  product: Product;
+  quantity: number;
+  totalPrice?: number;
+}
