@@ -1,6 +1,7 @@
 import { CartItem } from "../types";
 import { useAppDispatch } from "../redux/reduxHooks";
 import { removeCartItem } from "../redux/productSlice";
+
 interface CartItemProps {
   cartItem: CartItem;
 }
