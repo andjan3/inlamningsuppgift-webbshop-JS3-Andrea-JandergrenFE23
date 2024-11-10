@@ -8,8 +8,10 @@ function Webbshop() {
   return (
     <div className="App">
       <Searchbar />
-      <ProductList />
-      <CartItemList />
+      <div className="wrapper">
+        <ProductList />
+        <CartItemList />
+      </div>
     </div>
   );
 }
