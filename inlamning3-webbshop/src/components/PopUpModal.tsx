@@ -29,7 +29,6 @@ export function PopUpModal({ title, description }: PopUpModalInfo) {
           className="modal show d-block"
           tabIndex={-1}
           role="dialog"
-          style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
           onClick={closeModal}
         >
           <div
