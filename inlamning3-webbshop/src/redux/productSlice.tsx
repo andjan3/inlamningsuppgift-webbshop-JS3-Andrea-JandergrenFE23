@@ -6,12 +6,48 @@ interface ProductsState {
   allProducts: Product[];
   filteredProducts: Product[];
   cartItems: CartItem[];
+  totalPrice: number;
 }
 
 const initialState: ProductsState = {
   allProducts: productsData.products,
   filteredProducts: [],
   cartItems: [],
+  totalPrice: 0,
+};
+
+const addToCart = (cartItems: CartItem[], product: Product): CartItem[] => {
+  const existingCartItem = cartItems.find(
+    (item) => item.product.id === product.id
+  );
+  if (existingCartItem) {
+    return cartItems.map((item) =>
+      item.product.id === product.id
+        ? {
+            ...item,
+            quantity: item.quantity + 1,
+            totalPrice: (item.quantity + 1) * product.price,
+          }
+        : item
+    );
+  } else {
+    return [
+      ...cartItems,
+      {
+        product,
+        quantity: 1,
+        totalPrice: product.price,
+      },
+    ];
+  }
+};
+
+const calculateTotalPrice = (cartItems: CartItem[]): number => {
+  return cartItems.reduce(
+    (total: number, item: CartItem) =>
+      total + item.product.price * item.quantity,
+    0
+  );
 };
 export const productSlice = createSlice({
   name: "product",
@@ -23,7 +59,6 @@ export const productSlice = createSlice({
         const descriptionText = Object.values(product.description)
           .join(" ")
           .toLowerCase();
-
         return (
           product.title.toLowerCase().includes(searchFilter) ||
           descriptionText.includes(searchFilter)
@@ -31,34 +66,15 @@ export const productSlice = createSlice({
       });
     },
     addProductToCart: (state, action: PayloadAction<Product>) => {
-      const product = action.payload;
-
-      if (product) {
-        const existingCartItem = state.cartItems.find(
-          (item) => item.product.id === product.id
-        );
-
-        if (existingCartItem) {
-          existingCartItem.quantity += 1;
-          existingCartItem.totalPrice =
-            existingCartItem.quantity * product.price;
-        } else {
-          state.cartItems.push({
-            product,
-            quantity: 1,
-            totalPrice: product.price,
-          });
-        }
-      }
+      state.cartItems = addToCart(state.cartItems, action.payload);
+      state.totalPrice = calculateTotalPrice(state.cartItems);
     },
 
-    removeCartItem: (
-      state: { cartItems: CartItem[] },
-      action: PayloadAction<number>
-    ) => {
+    removeCartItem: (state, action: PayloadAction<number>) => {
       state.cartItems = state.cartItems.filter(
         (item) => item.product.id !== action.payload
       );
+      state.totalPrice = calculateTotalPrice(state.cartItems);
     },
   },
 
@@ -70,10 +86,14 @@ export const productSlice = createSlice({
     selectCartItems: (state) => {
       return state.cartItems;
     },
+
+    selectTotalPrice: (state) => {
+      return state.totalPrice;
+    },
   },
 });
 
-export const { selectFilteredProducts, selectCartItems } =
+export const { selectFilteredProducts, selectCartItems, selectTotalPrice } =
   productSlice.selectors;
 export const { filterProduct, addProductToCart, removeCartItem } =
   productSlice.actions;
