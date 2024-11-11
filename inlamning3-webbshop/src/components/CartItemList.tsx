@@ -17,7 +17,10 @@ export default function CartItemList() {
           {cartItems.map((cartItem) => (
             <CartItemCard key={cartItem.product.id} cartItem={cartItem} />
           ))}
-          <h4>Total: {totalPrice} </h4>
+          <div className="totalPriceWrapper">
+            <div>Total: </div>
+            <div> {totalPrice} SEK</div>
+          </div>
         </div>
       )}
     </div>
