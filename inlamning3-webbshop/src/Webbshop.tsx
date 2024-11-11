@@ -1,17 +1,30 @@
-import React from "react";
 import "./App.css";
 import Searchbar from "./components/Searchbar";
 import ProductList from "./components/ProductList";
 import CartItemList from "./components/CartItemList";
+import { useAppSelector } from "./redux/reduxHooks";
+import { selectFilteredProducts } from "./redux/productSlice";
 
 function Webbshop() {
+  const filteredProducts = useAppSelector(selectFilteredProducts);
+
+  const renderContent = () => {
+    if (filteredProducts.length === 0) {
+      return <h2>Search for clothing in search input, e.g., "T-shirt"</h2>;
+    } else {
+      return (
+        <>
+          <ProductList />
+          <CartItemList />
+        </>
+      );
+    }
+  };
+
   return (
     <div className="App">
       <Searchbar />
-      <div className="wrapper">
-        <ProductList />
-        <CartItemList />
-      </div>
+      <div className="wrapper">{renderContent()}</div>
     </div>
   );
 }
