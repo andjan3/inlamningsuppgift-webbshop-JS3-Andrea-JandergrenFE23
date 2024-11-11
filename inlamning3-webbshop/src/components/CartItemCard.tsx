@@ -15,27 +15,27 @@ export const CartItemCard = ({ cartItem }: CartItemProps) => {
 
   return (
     <div key={cartItem.product.id} className="card mb-2">
-      <div className="d-flex align-items-center p-3">
+      <div className="d-flex p-2">
         <img
           src={cartItem.product.imgUrl}
-          className="img-fluid me-3 cartItemImg"
+          className="me-3 cartItemImg"
           alt={cartItem.product.title}
         />
-        <div className="flex-grow-1">
-          <h5 className="card-title">{cartItem.product.title}</h5>
-          <p className="card-text">Quantity: {cartItem.quantity}</p>
-          <div className="test">
-            <p>Price: {cartItem.product.price} SEK</p>
+        <div className="cartItemWrapper">
+          <h5 className="cardTitle">{cartItem.product.title}</h5>
+          <p className="cardText">Quantity: {cartItem.quantity}</p>
+          <div className="cartItemDetails">
+            <p className="cardText">Price: {cartItem.product.price} SEK</p>
             <button
               type="button"
-              className="btn btn-danger"
+              className="deleteBtn"
               onClick={() => handleOnClick(cartItem.product.id)}
             >
-              Delete
+              <span className="material-symbols-outlined">delete</span>
             </button>
           </div>
 
-          <p className="card-text">Total: {cartItem.totalPrice} SEK</p>
+          <p className="cardText">Total: {cartItem.totalPrice} SEK</p>
         </div>
       </div>
     </div>

@@ -14,7 +14,7 @@
 .wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 .input-group {
   max-width: 500px;
@@ -32,18 +32,48 @@ li {
 .mb-2 {
   width: 30vw;
 }
-
+.mb-4 {
+  width: 405px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .modal {
   background-color: rgba(0, 0, 0, 0.5);
 }
-
+.totalPriceWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.totalPriceWrapper > div {
+  font-size: 20px;
+}
 .cartItemImg {
   width: 100px;
   height: auto;
 }
 
-.test {
+.deleteBtn {
+  background-color: white;
+  border: none;
+  height: 24px;
+}
+.cartItemDetails {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+}
+
+.cartItemWrapper {
+  width: 275px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cardTitle {
+  font-size: 14px;
+  font-weight: bolder;
+}
+
+.cardText {
+  font-size: 12px;
 }

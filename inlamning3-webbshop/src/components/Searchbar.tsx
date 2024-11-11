@@ -13,7 +13,6 @@ export default function Searchbar() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(searchInput.input);
     dispatch(filterProduct(searchInput.input));
     setSearchInput({ input: "" });
   };

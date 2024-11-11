@@ -10,12 +10,11 @@ export interface Product {
   title: string;
   description: ProductDescription;
   price: number;
-  color: string;
   imgUrl: string;
 }
 
 export interface CartItem {
   product: Product;
   quantity: number;
-  totalPrice?: number;
+  totalPrice: number;
 }
