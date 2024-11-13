@@ -14,37 +14,29 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
   return (
     <>
-      <div className="card mb-3">
-        <div className="row g-0">
-          <div className="col-md-2">
-            <img
-              src={product.imgUrl}
-              className="img-fluid rounded-start"
-              alt={"Image of" + product.title}
-            />
-          </div>
+      <div
+        className="card mb-3 d-flex flex-column flex-md-row productCardContainer"
+        style={{ maxWidth: "740px" }}
+      >
+        <img
+          src={product.imgUrl}
+          className="card-img-top"
+          alt={"Image of" + product.title}
+        />
 
-          <div className="col-md-10 d-flex justify-content-between align-items-center">
-            <div className="col-md-4">
-              <div className="card-body">
-                <h5 className="card-title">{product.title}</h5>
-                <PopUpModal
-                  title={product.title}
-                  description={product.description}
-                />
-              </div>
-            </div>
-            <div className="col-md-2 d-flex flex-column align-items-center">
-              <p className="card-text">{product.price} SEK</p>
-              <button
-                type="button"
-                className="btn btn-outline-primary"
-                onClick={() => handleOnClick(product)}
-              >
-                Add to cart
-              </button>
-            </div>
-          </div>
+        <div className="card-body d-flex flex-column  justify-content-center">
+          <h5 className="card-title">{product.title}</h5>
+          <PopUpModal title={product.title} description={product.description} />
+        </div>
+        <div className="cardFooter d-flex  align-items-center">
+          <p>{product.price} SEK</p>
+          <button
+            type="button"
+            className="btn btn-outline-primary"
+            onClick={() => handleOnClick(product)}
+          >
+            Add to cart
+          </button>
         </div>
       </div>
     </>
