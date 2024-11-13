@@ -8,12 +8,12 @@ export default function CartItemList() {
   const totalPrice = useAppSelector(selectTotalPrice);
 
   return (
-    <div className="mb-4">
+    <div className="cartWrapper">
       <h2>Shopping Cart</h2>
       {cartItems.length === 0 ? (
         <p>Your shopping cart is empty.</p>
       ) : (
-        <div className="mb-2">
+        <>
           {cartItems.map((cartItem) => (
             <CartItemCard key={cartItem.product.id} cartItem={cartItem} />
           ))}
@@ -21,7 +21,7 @@ export default function CartItemList() {
             <div>Total: </div>
             <div> {totalPrice} SEK</div>
           </div>
-        </div>
+        </>
       )}
     </div>
   );

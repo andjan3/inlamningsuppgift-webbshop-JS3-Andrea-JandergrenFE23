@@ -14,14 +14,15 @@ export const CartItemCard = ({ cartItem }: CartItemProps) => {
   };
 
   return (
-    <div key={cartItem.product.id} className="card mb-2">
-      <div className="d-flex p-2">
+    <>
+      <div key={cartItem.product.id} className="card cartItemContainer">
         <img
           src={cartItem.product.imgUrl}
-          className="me-3 cartItemImg"
+          className="card-img-top cartItemImg"
           alt={cartItem.product.title}
+          style={{ width: "6rem", height: "auto" }}
         />
-        <div className="cartItemWrapper">
+        <div className="card-body" style={{ flex: "1" }}>
           <h5 className="cardTitle">{cartItem.product.title}</h5>
           <p className="cardText">Quantity: {cartItem.quantity}</p>
           <div className="cartItemDetails">
@@ -38,6 +39,6 @@ export const CartItemCard = ({ cartItem }: CartItemProps) => {
           <p className="cardText">Total: {cartItem.totalPrice} SEK</p>
         </div>
       </div>
-    </div>
+    </>
   );
 };
