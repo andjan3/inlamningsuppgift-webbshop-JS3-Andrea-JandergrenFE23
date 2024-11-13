@@ -11,7 +11,7 @@ export default function Searchbar() {
   const initialState: InputState = { input: "" };
   const [searchInput, setSearchInput] = useState<InputState>(initialState);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(filterProduct(searchInput.input));
     setSearchInput({ input: "" });
@@ -25,12 +25,7 @@ export default function Searchbar() {
             className="form-control"
             placeholder="Search"
             value={searchInput.input}
-            onChange={(e) =>
-              setSearchInput((oldState) => ({
-                ...oldState,
-                input: e.target.value,
-              }))
-            }
+            onChange={(e) => setSearchInput({ input: e.target.value })}
           />
           <button className="btn btn-primary" type="submit">
             Search
