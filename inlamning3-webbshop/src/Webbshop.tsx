@@ -10,7 +10,11 @@ function Webbshop() {
 
   const renderContent = () => {
     if (filteredProducts.length === 0) {
-      return <h2>Search for clothing in search input, e.g., "T-shirt"</h2>;
+      return (
+        <h2>
+          Search for items like "T-shirt"or "Denim" to explore our collection.
+        </h2>
+      );
     } else {
       return (
         <>

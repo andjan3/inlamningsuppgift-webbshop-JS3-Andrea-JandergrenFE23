@@ -23,16 +23,21 @@ export const productSlice = createSlice({
   reducers: {
     filterProduct: (state, action: PayloadAction<string>) => {
       const searchFilter = action.payload.trim().toLowerCase();
-      state.filteredProducts = state.allProducts.filter((product) => {
+
+      const filtered = state.allProducts.filter((product) => {
         const descriptionText = Object.values(product.description)
           .join(" ")
           .toLowerCase();
+
         return (
           product.title.toLowerCase().includes(searchFilter) ||
           descriptionText.includes(searchFilter)
         );
       });
+
+      state.filteredProducts = filtered;
     },
+
     addProductToCart: (state, action: PayloadAction<Product>) => {
       state.cartItems = addToCart(state.cartItems, action.payload);
       state.totalPrice = calculateCartTotal(state.cartItems);

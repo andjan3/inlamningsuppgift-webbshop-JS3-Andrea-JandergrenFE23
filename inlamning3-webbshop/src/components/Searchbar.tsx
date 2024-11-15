@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useAppDispatch } from "../redux/reduxHooks";
-import { filterProduct } from "../redux/productSlice";
+import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
+import { filterProduct, selectFilteredProducts } from "../redux/productSlice";
 
 interface InputState {
   input: string;
@@ -8,14 +8,20 @@ interface InputState {
 
 export default function Searchbar() {
   const dispatch = useAppDispatch();
+  const filteredProducts = useAppSelector(selectFilteredProducts);
+
   const initialState: InputState = { input: "" };
   const [searchInput, setSearchInput] = useState<InputState>(initialState);
+  const [isSearchSubmitted, setIsSearchSubmitted] = useState<boolean>(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     dispatch(filterProduct(searchInput.input));
     setSearchInput({ input: "" });
+    setIsSearchSubmitted(true);
   };
+
   return (
     <>
       <div className="d-flex justify-content-center my-3">
@@ -32,6 +38,12 @@ export default function Searchbar() {
           </button>
         </form>
       </div>
+
+      {filteredProducts.length === 0 && isSearchSubmitted && (
+        <div className="noProductsContainer">
+          <h2>No products found. Try again!</h2>
+        </div>
+      )}
     </>
   );
 }

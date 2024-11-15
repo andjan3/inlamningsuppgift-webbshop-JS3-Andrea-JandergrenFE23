@@ -17,7 +17,12 @@
 p {
   margin-bottom: 0 !important;
 }
-
+.noProductsContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
 h5 {
   text-transform: capitalize;
 }
