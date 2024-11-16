@@ -1,3 +1,14 @@
+/*
+CartItemCard component:
+This component is responsible for rendering a single item in the shopping cart 
+and allowing users to remove it from the cart.
+
+-It takes the cartItem-object as a prop from CartItemtList-component.
+-Dispatches removeCartItem and passing the id as a argument to remove the item from the `cartItems` state in Redux.
+
+
+*/
+
 import { CartItem } from "../types";
 import { useAppDispatch } from "../redux/reduxHooks";
 import { removeCartItem } from "../redux/productSlice";

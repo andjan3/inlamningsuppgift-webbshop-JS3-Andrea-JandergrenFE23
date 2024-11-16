@@ -1,3 +1,15 @@
+/*
+Searchbar Component:
+This component is responsible for rendering the search form and handling user input.
+
+Functionality:
+- Updates the filteredProducts state by dispatching and passing users input as an argument when the form is submitted.
+- Has two internal states:
+    -searchInput - to store the current search text entered by the user.
+    -isSearchSubmitted - to track whether the form has been submitted and help show a "No products found" message if no results are found.
+
+*/
+
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
 import { filterProduct, selectFilteredProducts } from "../redux/productSlice";

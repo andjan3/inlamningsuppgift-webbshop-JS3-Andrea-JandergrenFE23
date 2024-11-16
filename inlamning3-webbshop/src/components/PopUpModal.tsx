@@ -1,3 +1,12 @@
+/* 
+PopUpModal component:
+This component is responsible for rendering a popUpModal with additional information to the product, such
+as title and description. 
+
+-It contains an internal state to manage the visibility of the modal.
+
+*/
+
 import { useState } from "react";
 import { ProductDescription } from "../types";
 
