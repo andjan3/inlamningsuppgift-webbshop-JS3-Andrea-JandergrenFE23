@@ -1,3 +1,12 @@
+/*
+CartUtils:
+-This file contains helper functions to handle cart-operations in productSlice.
+
+Functions:
+-addToCart: Adds a product to the cart or increments its quantity if it already exists.
+-calculateProductTotal: calculates total price of a specific item in cart based on quantity and price.
+-calculateCartTotal: calculates total cost of all items in the cart.
+*/
 import { Product, CartItem } from "../types";
 
 const calculateProductTotal = (quantity: number, price: number): number => {

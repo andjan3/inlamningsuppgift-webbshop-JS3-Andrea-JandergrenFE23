@@ -14,17 +14,14 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
   return (
     <>
-      <div
-        className="card mb-3 d-flex flex-column flex-md-row productCardContainer"
-        style={{ maxWidth: "740px" }}
-      >
+      <div className="card mb-3 d-flex flex-column flex-md-row productCardContainer">
         <img
           src={product.imgUrl}
           className="card-img-top"
           alt={"Image of" + product.title}
         />
 
-        <div className="card-body d-flex flex-column  justify-content-center">
+        <div className="card-body d-flex flex-column  justify-content-center cardBody">
           <h5 className="card-title">{product.title}</h5>
           <PopUpModal title={product.title} description={product.description} />
         </div>

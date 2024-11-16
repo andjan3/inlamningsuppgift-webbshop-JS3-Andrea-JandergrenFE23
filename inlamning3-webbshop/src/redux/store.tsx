@@ -1,3 +1,8 @@
+/*
+Store:
+- This file sets up the Redux store using a single reducer, productReducer, which handles the product state.
+*/
+
 import { configureStore } from "@reduxjs/toolkit";
 import productReducer from "./productSlice";
 

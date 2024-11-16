@@ -90,6 +90,7 @@ li {
 .cartItemDetails {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .cartItemWrapper {
@@ -114,7 +115,7 @@ li {
     background-color: white;
     font-size: 12px;
     display: flex;
-    width: 28%;
+    width: 20%;
   }
 
   .cardFooter {
@@ -122,16 +123,17 @@ li {
     flex-direction: column;
     width: 30%;
     justify-content: center !important;
+    padding: 0;
   }
 
   .wrapper {
     justify-content: space-evenly;
   }
   .productCardContainer {
-    max-height: 250px;
+    max-height: 200px !important;
   }
   .card-img-top {
-    max-width: 200px;
+    max-width: 150px;
   }
   .cartWrapper {
     min-width: 350px;
@@ -146,5 +148,9 @@ li {
 
   .modal-header {
     align-items: baseline !important;
+  }
+
+  .cardBody {
+    min-width: 485px;
   }
 }
