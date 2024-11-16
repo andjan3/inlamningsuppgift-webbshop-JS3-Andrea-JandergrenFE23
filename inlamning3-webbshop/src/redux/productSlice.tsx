@@ -1,3 +1,20 @@
+/* 
+  productSlice: 
+  - This slice manages the state related to products in the application.
+
+  -Functionality:
+    -filterProduct: filtering products based on input provided by user.
+    -addProductToCart: adding products to the cart, the specific product object is passed as payload.
+    -removeCartItem: removing products from the cart, the products id is passed as payload.
+
+ -State: 
+  -allProducts: List of all products from the external file products.json
+  -filteredProducts: List of products that match the search applied by the user.
+  -cartItems: Contains a list of items added to the shopping cart. 
+  -totalPrice: Holds the total price of all added products in the cart
+
+*/
+
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import productsData from "../db/products.json";
 import { Product, CartItem } from "../types";

@@ -31,7 +31,12 @@ export default function Searchbar() {
             className="form-control"
             placeholder="Search"
             value={searchInput.input}
-            onChange={(e) => setSearchInput({ input: e.target.value })}
+            onChange={(e) =>
+              setSearchInput((prevState) => ({
+                ...prevState,
+                input: e.target.value,
+              }))
+            }
           />
           <button className="btn btn-primary" type="submit">
             Search
