@@ -2,18 +2,21 @@
   productSlice: 
   - This slice manages the state related to products in the application.
 
-  -Functionality:
-    -filterProduct: filtering products based on input provided by user.
-    -addProductToCart: adding products to the cart, the specific product object is passed as payload.
-    -removeCartItem: removing products from the cart, the products id is passed as payload.
+ === Functionality  ===
+  -filterProduct: filtering products based on input provided by user.
+  -addProductToCart: adding products to the cart, the specific product object is passed as payload.
+  -removeCartItem: removing products from the cart, the products id is passed as payload.
+  - setFocusProduct: Sets a specific product as the one to display details for.
+  - setModalVisible: Toggles the visibility of the modal popup.
 
- -State: 
-  -allProducts: List of all products from the external file products.json
+  === State ===
   -filteredProducts: List of products that match the search applied by the user.
   -cartItems: Contains a list of items added to the shopping cart. 
-  -totalPrice: Holds the total price of all added products in the cart
+  -focusProduct: Contains a single product of which details should be displayd in popUpModal.
+  -isModalVisible: boolean, holding wheather the popUpModal should be visible or not.
 
-  Memoized selector for calculating total price.
+  === Memoized selector ===
+  selectCartTotalPrice: calculating total price of products in the cart.
 
 */
 
@@ -105,6 +108,9 @@ export const {
   setModalVisible,
 } = productSlice.actions;
 export default productSlice.reducer;
+
+// Memoized selector for calculating the total price of cart items.
+// This ensures the total is only recalculated when the cartItems array changes.
 
 export const selectCartTotalPrice = createSelector(
   [selectCartItems],

@@ -5,7 +5,7 @@ Webbshop Component:
   ** Search bar for filtering products.
   ** List of filtered products (ProductList).
   ** List of items in the cart (CartItemList).
-- Based on the filtered products, it conditionally renders a info message to guide the user.
+- If there are no filtered products, it conditionally renders a info message to guide the user.
 */
 
 import "./App.css";

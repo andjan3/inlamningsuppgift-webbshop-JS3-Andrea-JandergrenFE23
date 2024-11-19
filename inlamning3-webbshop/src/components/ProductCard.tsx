@@ -1,11 +1,9 @@
 /*
 Productard component:
-This component is responsible for rendering a single product and 
-allowing users to add a product to the cart.
-
--It takes the product-object as a prop from ProductList-component.
--Dispatches addProductToCart and passing the product-object as a argument to update cartItems-state.
--Also passing product title and descrption as props to popUpModal-component
+- Responsible for rendering a single product's details (image, quantity, title, and price).
+  - Allows the user to:
+  - Add the product to the cart.
+  - Open a modal to view more product details.
 
 */
 
