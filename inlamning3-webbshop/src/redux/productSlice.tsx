@@ -43,7 +43,7 @@ export const productSlice = createSlice({
   name: "product",
   initialState,
   reducers: {
-    filterProduct: (state, action: PayloadAction<string>) => {
+    filterProduct: (state: ProductsState, action: PayloadAction<string>) => {
       const searchFilter = action.payload.trim().toLowerCase();
 
       state.filteredProducts = productsData.products.filter((product) => {
@@ -58,17 +58,20 @@ export const productSlice = createSlice({
       });
     },
 
-    setModalVisible: (state, action: PayloadAction<boolean>) => {
+    setModalVisible: (state: ProductsState, action: PayloadAction<boolean>) => {
       state.isModalVisible = action.payload;
     },
-    setFocusProduct: (state, action: PayloadAction<Product>) => {
+    setFocusProduct: (state: ProductsState, action: PayloadAction<Product>) => {
       state.focusProduct = action.payload;
     },
-    addProductToCart: (state, action: PayloadAction<Product>) => {
+    addProductToCart: (
+      state: ProductsState,
+      action: PayloadAction<Product>
+    ) => {
       state.cartItems = addToCart(state.cartItems, action.payload);
     },
 
-    removeCartItem: (state, action: PayloadAction<number>) => {
+    removeCartItem: (state: ProductsState, action: PayloadAction<number>) => {
       state.cartItems = state.cartItems.filter(
         (item) => item.product.id !== action.payload
       );
@@ -114,7 +117,7 @@ export default productSlice.reducer;
 
 export const selectCartTotalPrice = createSelector(
   [selectCartItems],
-  (cartItems) => {
+  (cartItems: CartItem[]): number => {
     if (cartItems.length === 0 || !cartItems) {
       return 0;
     }

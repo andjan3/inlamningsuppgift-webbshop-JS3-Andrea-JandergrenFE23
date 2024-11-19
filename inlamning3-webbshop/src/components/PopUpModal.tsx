@@ -13,16 +13,19 @@ import {
   selectFocusProduct,
 } from "../redux/productSlice";
 import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
+import { Product } from "../types";
 
 export function PopUpModal() {
   const dispatch = useAppDispatch();
-  const isModalVisible = useAppSelector(selectIsModalVisible);
-  const product = useAppSelector(selectFocusProduct);
+  const isModalVisible: boolean = useAppSelector(selectIsModalVisible);
+  const product: Product | null = useAppSelector(selectFocusProduct);
 
   const closeModal = (e: React.MouseEvent) => {
     e.stopPropagation();
     dispatch(setModalVisible(false));
   };
+
+  if (!product) return null;
 
   return (
     <>

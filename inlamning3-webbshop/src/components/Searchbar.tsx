@@ -13,6 +13,7 @@ Functionality:
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
 import { filterProduct, selectFilteredProducts } from "../redux/productSlice";
+import { Product } from "../types";
 
 interface InputState {
   input: string;
@@ -20,7 +21,7 @@ interface InputState {
 
 export default function Searchbar() {
   const dispatch = useAppDispatch();
-  const filteredProducts = useAppSelector(selectFilteredProducts);
+  const filteredProducts: Product[] = useAppSelector(selectFilteredProducts);
 
   const initialState: InputState = { input: "" };
   const [searchInput, setSearchInput] = useState<InputState>(initialState);

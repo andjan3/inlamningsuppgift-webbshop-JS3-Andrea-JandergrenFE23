@@ -9,9 +9,10 @@ passing the product-object as a prop to the ProductCard component.
 import ProductCard from "./ProductCard";
 import { useAppSelector } from "../redux/reduxHooks";
 import { selectFilteredProducts } from "../redux/productSlice";
+import { Product } from "../types";
 
 export default function ProductList() {
-  const filteredProducts = useAppSelector(selectFilteredProducts);
+  const filteredProducts: Product[] = useAppSelector(selectFilteredProducts);
   return (
     <>
       <div className="productList">

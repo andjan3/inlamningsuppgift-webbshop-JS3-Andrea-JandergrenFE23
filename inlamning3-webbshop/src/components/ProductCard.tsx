@@ -23,7 +23,7 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   const dispatch = useAppDispatch();
 
-  const isModalVisible = useAppSelector(selectIsModalVisible);
+  const isModalVisible: boolean = useAppSelector(selectIsModalVisible);
 
   const handleOnClick = (product: Product) => {
     dispatch(addProductToCart(product));
@@ -36,39 +36,38 @@ export default function ProductCard({ product }: ProductCardProps) {
     dispatch(setFocusProduct(product));
   };
   return (
-    <>
-      <div className="card mb-3 d-flex flex-column flex-md-row productCardContainer">
-        <img
-          src={product.imgUrl}
-          className="card-img-top"
-          alt={"Image of" + product.title}
-        />
+    <div className="card mb-3 d-flex flex-column flex-md-row productCardContainer">
+      <img
+        src={product.imgUrl}
+        className="card-img-top"
+        alt={"Image of " + product.title}
+      />
 
-        <div className="card-body d-flex flex-column  justify-content-center cardBody">
-          <h5 className="card-title">{product.title}</h5>
-          {isModalVisible && <PopUpModal />}
-          <button
-            type="button"
-            className="moreInfoBtn"
-            onClick={() => {
-              openModal();
-              updateFocusProduct(product);
-            }}
-          >
-            More information
-          </button>
-        </div>
-        <div className="cardFooter d-flex  align-items-center">
-          <p>{product.price} SEK</p>
-          <button
-            type="button"
-            className="btn btn-outline-primary"
-            onClick={() => handleOnClick(product)}
-          >
-            Add to cart
-          </button>
-        </div>
+      <div className="card-body d-flex flex-column justify-content-center cardBody">
+        <h5 className="card-title">{product.title}</h5>
+        {isModalVisible ? <PopUpModal /> : null}
+        <button
+          type="button"
+          className="moreInfoBtn"
+          onClick={() => {
+            openModal();
+            updateFocusProduct(product);
+          }}
+        >
+          More information
+        </button>
       </div>
-    </>
+
+      <div className="cardFooter d-flex align-items-center">
+        <p>{product.price} SEK</p>
+        <button
+          type="button"
+          className="btn btn-outline-primary"
+          onClick={() => handleOnClick(product)}
+        >
+          Add to cart
+        </button>
+      </div>
+    </div>
   );
 }
