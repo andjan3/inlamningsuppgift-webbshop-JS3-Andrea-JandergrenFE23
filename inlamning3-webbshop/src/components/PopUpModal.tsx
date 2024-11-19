@@ -3,36 +3,29 @@ PopUpModal component:
 This component is responsible for rendering a popUpModal with additional information to the product, such
 as title and description. 
 
--It contains an internal state to manage the visibility of the modal.
-
+-Select product details and modal visibility state from Redux.
+- Handles closing of the modal through user interaction.
 */
 
-import { useState } from "react";
-import { ProductDescription } from "../types";
+import {
+  selectIsModalVisible,
+  setModalVisible,
+  selectFocusProduct,
+} from "../redux/productSlice";
+import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
 
-interface PopUpModalInfo {
-  title: string;
-  description: ProductDescription;
-}
-
-export function PopUpModal({ title, description }: PopUpModalInfo) {
-  const [isModalVisible, setModalVisible] = useState<boolean>(false);
-
-  const openModal = () => {
-    setModalVisible(true);
-  };
+export function PopUpModal() {
+  const dispatch = useAppDispatch();
+  const isModalVisible = useAppSelector(selectIsModalVisible);
+  const product = useAppSelector(selectFocusProduct);
 
   const closeModal = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setModalVisible(false);
+    dispatch(setModalVisible(false));
   };
 
   return (
     <>
-      <button type="button" className="moreInfoBtn" onClick={openModal}>
-        More information
-      </button>
-
       {isModalVisible && (
         <div
           className="modal show d-block"
@@ -47,7 +40,7 @@ export function PopUpModal({ title, description }: PopUpModalInfo) {
           >
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title">{title}</h5>
+                <h5 className="modal-title">{product?.title}</h5>
                 <button
                   type="button"
                   className="btn-close"
@@ -56,11 +49,12 @@ export function PopUpModal({ title, description }: PopUpModalInfo) {
               </div>
               <div className="modal-body">
                 <ul>
-                  {Object.entries(description).map(([key, value]) => (
-                    <li key={key}>
-                      <strong>{key}:</strong> {value}
-                    </li>
-                  ))}
+                  {product?.description &&
+                    Object.entries(product?.description).map(([key, value]) => (
+                      <li key={key}>
+                        <strong>{key}:</strong> {value}
+                      </li>
+                    ))}
                 </ul>
               </div>
               <div className="modal-footer">

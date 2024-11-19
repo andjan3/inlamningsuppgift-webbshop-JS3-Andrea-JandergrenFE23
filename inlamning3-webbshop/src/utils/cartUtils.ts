@@ -5,7 +5,6 @@ CartUtils:
 Functions:
 -addToCart: Adds a product to the cart or increments its quantity if it already exists.
 -calculateProductTotal: calculates total price of a specific item in cart based on quantity and price.
--calculateCartTotal: calculates total cost of all items in the cart.
 */
 import { Product, CartItem } from "../types";
 
@@ -41,11 +40,4 @@ const addToCart = (cartItems: CartItem[], product: Product): CartItem[] => {
   }
 };
 
-const calculateCartTotal = (cartItems: CartItem[]): number => {
-  return cartItems.reduce(
-    (total: number, item: CartItem) =>
-      total + item.product.price * item.quantity,
-    0
-  );
-};
-export { addToCart, calculateCartTotal };
+export { addToCart };
