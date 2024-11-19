@@ -41,11 +41,4 @@ const addToCart = (cartItems: CartItem[], product: Product): CartItem[] => {
   }
 };
 
-const calculateCartTotal = (cartItems: CartItem[]): number => {
-  return cartItems.reduce(
-    (total: number, item: CartItem) =>
-      total + item.product.price * item.quantity,
-    0
-  );
-};
-export { addToCart, calculateCartTotal };
+export { addToCart };

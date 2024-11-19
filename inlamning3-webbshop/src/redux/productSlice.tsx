@@ -13,25 +13,27 @@
   -cartItems: Contains a list of items added to the shopping cart. 
   -totalPrice: Holds the total price of all added products in the cart
 
+  Memoized selector for calculating total price.
+
 */
 
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, createSelector } from "@reduxjs/toolkit";
 import productsData from "../db/products.json";
 import { Product, CartItem } from "../types";
-import { addToCart, calculateCartTotal } from "../utils/cartUtils";
+import { addToCart } from "../utils/cartUtils";
 
 interface ProductsState {
-  allProducts: Product[];
   filteredProducts: Product[];
   cartItems: CartItem[];
-  totalPrice: number;
+  focusProduct: Product | null;
+  isModalVisible: boolean;
 }
 
 const initialState: ProductsState = {
-  allProducts: productsData.products,
   filteredProducts: [],
   cartItems: [],
-  totalPrice: 0,
+  focusProduct: null,
+  isModalVisible: false,
 };
 
 export const productSlice = createSlice({
@@ -41,7 +43,7 @@ export const productSlice = createSlice({
     filterProduct: (state, action: PayloadAction<string>) => {
       const searchFilter = action.payload.trim().toLowerCase();
 
-      const filtered = state.allProducts.filter((product) => {
+      state.filteredProducts = productsData.products.filter((product) => {
         const descriptionText = Object.values(product.description)
           .join(" ")
           .toLowerCase();
@@ -51,20 +53,22 @@ export const productSlice = createSlice({
           descriptionText.includes(searchFilter)
         );
       });
-
-      state.filteredProducts = filtered;
     },
 
+    setModalVisible: (state, action: PayloadAction<boolean>) => {
+      state.isModalVisible = action.payload;
+    },
+    setFocusProduct: (state, action: PayloadAction<Product>) => {
+      state.focusProduct = action.payload;
+    },
     addProductToCart: (state, action: PayloadAction<Product>) => {
       state.cartItems = addToCart(state.cartItems, action.payload);
-      state.totalPrice = calculateCartTotal(state.cartItems);
     },
 
     removeCartItem: (state, action: PayloadAction<number>) => {
       state.cartItems = state.cartItems.filter(
         (item) => item.product.id !== action.payload
       );
-      state.totalPrice = calculateCartTotal(state.cartItems);
     },
   },
 
@@ -77,14 +81,41 @@ export const productSlice = createSlice({
       return state.cartItems;
     },
 
-    selectTotalPrice: (state: ProductsState) => {
-      return state.totalPrice;
+    selectFocusProduct: (state: ProductsState) => {
+      return state.focusProduct;
+    },
+
+    selectIsModalVisible: (state: ProductsState) => {
+      return state.isModalVisible;
     },
   },
 });
 
-export const { selectFilteredProducts, selectCartItems, selectTotalPrice } =
-  productSlice.selectors;
-export const { filterProduct, addProductToCart, removeCartItem } =
-  productSlice.actions;
+export const {
+  selectFilteredProducts,
+  selectCartItems,
+  selectFocusProduct,
+  selectIsModalVisible,
+} = productSlice.selectors;
+export const {
+  filterProduct,
+  addProductToCart,
+  removeCartItem,
+  setFocusProduct,
+  setModalVisible,
+} = productSlice.actions;
 export default productSlice.reducer;
+
+export const selectCartTotalPrice = createSelector(
+  [selectCartItems],
+  (cartItems) => {
+    if (cartItems.length === 0 || !cartItems) {
+      return 0;
+    }
+    return cartItems.reduce(
+      (total: number, item: CartItem) =>
+        total + item.product.price * item.quantity,
+      0
+    );
+  }
+);

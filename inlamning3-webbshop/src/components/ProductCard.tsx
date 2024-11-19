@@ -11,8 +11,13 @@ allowing users to add a product to the cart.
 
 import { Product } from "../types";
 import { PopUpModal } from "./PopUpModal";
-import { useAppDispatch } from "../redux/reduxHooks";
-import { addProductToCart } from "../redux/productSlice";
+import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
+import {
+  addProductToCart,
+  selectIsModalVisible,
+  setModalVisible,
+  setFocusProduct,
+} from "../redux/productSlice";
 
 interface ProductCardProps {
   product: Product;
@@ -20,8 +25,17 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   const dispatch = useAppDispatch();
 
+  const isModalVisible = useAppSelector(selectIsModalVisible);
+
   const handleOnClick = (product: Product) => {
     dispatch(addProductToCart(product));
+  };
+  const openModal = () => {
+    dispatch(setModalVisible(true));
+  };
+
+  const updateFocusProduct = (product: Product) => {
+    dispatch(setFocusProduct(product));
   };
   return (
     <>
@@ -34,7 +48,17 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         <div className="card-body d-flex flex-column  justify-content-center cardBody">
           <h5 className="card-title">{product.title}</h5>
-          <PopUpModal title={product.title} description={product.description} />
+          {isModalVisible && <PopUpModal />}
+          <button
+            type="button"
+            className="moreInfoBtn"
+            onClick={() => {
+              openModal();
+              updateFocusProduct(product);
+            }}
+          >
+            More information
+          </button>
         </div>
         <div className="cardFooter d-flex  align-items-center">
           <p>{product.price} SEK</p>

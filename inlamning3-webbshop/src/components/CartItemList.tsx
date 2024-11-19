@@ -8,13 +8,12 @@ passing the cartItem-object as a prop to the CartItemtCard component.
 */
 
 import { useAppSelector } from "../redux/reduxHooks";
-import { selectCartItems } from "../redux/productSlice";
+import { selectCartItems, selectCartTotalPrice } from "../redux/productSlice";
 import { CartItemCard } from "./CartItemCard";
-import { selectTotalPrice } from "../redux/productSlice";
 
 export default function CartItemList() {
   const cartItems = useAppSelector(selectCartItems);
-  const totalPrice = useAppSelector(selectTotalPrice);
+  const totalPrice = useAppSelector(selectCartTotalPrice);
 
   return (
     <div className="cartWrapper">
